@@ -5,6 +5,7 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Home from './components/home'
 import Login from'./components/login'
 import Signup from'./components/signup'
+import Feedback from './components/feedback';
 function App() {
   return (
     <div>
@@ -15,6 +16,8 @@ function App() {
         <Route path='/camera'element={<CameraApp/>}/>
         <Route path='/login'element={<Login/>}/>
         <Route path='/signup'element={<Signup/>}/>
+        <Route path='/feedback'element={<Feedback/>}/>
+        
       </Routes>
       </BrowserRouter>
     </div>
