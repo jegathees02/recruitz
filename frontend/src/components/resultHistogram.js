@@ -21,7 +21,7 @@ import {
 
 const App = () => {
   const [loading, setLoading] = useState(true);
-  var score = 7;
+  var score = 77;
   const navigate = useNavigate();
   const data = [
     { name: 'Eye-Contact', percentage: 40 },
@@ -71,7 +71,7 @@ const App = () => {
             <ResponsiveContainer width="80%" height={500}>
               <BarChart data={data}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
+                <XAxis dataKey="name"/>
                 <YAxis tickFormatter={(value) => `${value}%`} />
                 <Tooltip />
                 <Legend />
@@ -155,11 +155,7 @@ const App = () => {
               stroke-dasharray: 0 1000;
             }
             100% {
-<<<<<<< HEAD
-              stroke-dasharray: ${(item.percentage / totalPercentage) * 1440} 10;
-=======
               stroke-dasharray: ${(item.percentage / totalPercentage) * 720} 100;
->>>>>>> 7c654965d97c0101755e0886318ec84936511577
             }
           }`
         ))}
@@ -194,7 +190,7 @@ const App = () => {
 const TypingAnimation = ({ children }) => {
   const textToType = React.Children.toArray(children).join('');
   const [typedText, setTypedText] = useState('');
-  const [showCursor, setShowCursor] = useState(false);
+  // const [showCursor, setShowCursor] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -206,7 +202,7 @@ const TypingAnimation = ({ children }) => {
 
       return () => clearTimeout(timeout);
     } else {
-      setShowCursor(true);
+      // setShowCursor(true);
     }
   }, [currentIndex, textToType]);
 
