@@ -94,7 +94,7 @@ const CameraApp = () => {
         const formData = new FormData();
         formData.append('videoData', videoBlob);
 
-      const response = await fetch('https://cbaf-2409-408d-4e9d-3ee3-8db-a281-faf8-865f.ngrok.io/upload_video_new', {
+      const response = await fetch('http://localhost:5000/upload_video_new', {
             method: 'POST',
             body: formData,
         });

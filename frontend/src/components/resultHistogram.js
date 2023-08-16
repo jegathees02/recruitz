@@ -21,6 +21,7 @@ import {
 } from '@chakra-ui/react';
 
 const App = () => {
+  const [output_data,setOutput_data] = useState([]);
   const [loading, setLoading] = useState(true);
   const bgColor = useColorModeValue('#4682B4','#2C3863');
   const bgColor1 = useColorModeValue('#33b894', 'teal');

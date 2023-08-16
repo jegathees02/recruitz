@@ -39,7 +39,8 @@ def eye_tracking_method(video_path):
         final_output = average_gaze * 100 * -1
         print(f"Average Gaze Percentage: {average_gaze:.2f}")
         print(f"{final_output:.2f}")
-        return jsonify({"average_gaze": average_gaze, "final_output": final_output})
+        # return jsonify({"average_gaze": average_gaze, "final_output": final_output})
+        return final_output
     else:
         print("No gaze data available.")
         return jsonify({"error": "No gaze data available."})
@@ -107,5 +108,5 @@ def eye_tracking_method(video_path):
 #     return final_output
 
 
-# if __name__ == "__main__":
-#     eye_tracking_method('/home/jegathees5555/Documents/recruitz/backend/video/uploaded_video.webm')
+if __name__ == "__main__":
+    eye_tracking_method('/home/jegathees5555/Documents/recruitz/backend/video/uploaded_video.webm')
