@@ -54,9 +54,18 @@ const CameraApp = () => {
     }
     setIsCameraOpen(false);
   };
-
+  const handleSubmitVideo = () => {
+    // Check if there are chunks to send
+    if (chunksRef.current.length > 0) {
+      const videoBlob = new Blob(chunksRef.current, { type: 'video/webm' });
+      sendVideoToBackend(videoBlob);
+      chunksRef.current = [];
+    } else {
+      console.log('No video data to submit');
+    }
+  };
   const startCamera = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true ,audio:true});
 
     const recorder = new MediaRecorder(stream, {
       mimeType: 'video/webm',
@@ -68,11 +77,11 @@ const CameraApp = () => {
       }
     };
 
-    recorder.onstop = () => {
-      const videoBlob = new Blob(chunksRef.current, { type: 'video/webm' });
-      sendVideoToBackend(videoBlob);
-      chunksRef.current = [];
-    };
+    // recorder.onstop = () => {
+    //   const videoBlob = new Blob(chunksRef.current, { type: 'video/webm' });
+    //   sendVideoToBackend(videoBlob);
+    //   chunksRef.current = [];
+    // };
 
     setMediaRecorder(recorder);
     setStartTime(Date.now()); // Set recording start time
@@ -189,7 +198,7 @@ const CameraApp = () => {
         <Button onClick={isCameraOpen ? stopCamera : startCamera} variant={'outline'} color={'teal'} borderColor={'teal'}>
           {isCameraOpen ? 'Stop Camera' : 'Start Camera'}
         </Button>
-          <Button onClick={stopCamera} variant={'solid'} backgroundColor={'teal'} isDisabled={!isCameraOpen}>
+        <Button onClick={handleSubmitVideo} variant={'solid'} backgroundColor={'teal'} isDisabled={chunksRef.current.length === 0}>
             Submit Video
           </Button>
       </HStack>
