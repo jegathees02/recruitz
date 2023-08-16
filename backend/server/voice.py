@@ -1,18 +1,21 @@
-import moviepy.editor as mp
-import librosa
-import numpy as np
+import subprocess
+import os
 
-def calculate_boldness(audio_data, sr):
-    boldness_metric = np.mean(librosa.feature.zero_crossing_rate(y=audio_data))
-    return boldness_metric
-
-def main(video_path):
+def extract_audio(input_file, output_file):
+    command = [
+        "ffmpeg",
+        "-i", input_file,
+        "-y",  # Overwrite output files
+        output_file
+    ]
     
-    video = mp.VideoFileClip(video_path)
-    audio = video.audio.to_soundarray()
-    mono_audio = np.mean(audio, axis=1)
-    sr = audio.shape[0] / video.duration    
-    boldness = calculate_boldness(mono_audio, sr)
-    return boldness*1000
-    # print(f"Boldness Percentage: {boldness * 1000:.2f}%")
+    subprocess.run(command)
 
+def voice_extraction_main():
+    input_file = "/home/jegathees5555/Documents/recruitz/backend/server/uploaded_video.webm"  # Replace with the path to your WebM file
+    output_file = "/home/jegathees5555/Documents/recruitz/backend/audio/output.mp3"  # Replace with the desired name for the output MP3 file
+
+    extract_audio(input_file, output_file)
+
+if __name__ == "__main__":
+    voice_extraction_main()
