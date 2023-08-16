@@ -146,7 +146,7 @@ const App = () => {
               stroke-dasharray: 0 1000;
             }
             100% {
-              stroke-dasharray: ${(item.percentage / totalPercentage) * 720} 10;
+              stroke-dasharray: ${(item.percentage / totalPercentage) * 720} 100;
             }
           }`
         ))}
