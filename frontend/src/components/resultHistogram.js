@@ -23,10 +23,9 @@ import {
 const App = () => {
   const [output_data,setOutput_data] = useState([]);
   const [loading, setLoading] = useState(true);
-  const bgColor = useColorModeValue('#4682B4','#2C3863');
-  const bgColor1 = useColorModeValue('#33b894', 'teal');
-  const textColor = useColorModeValue('black', 'white');
-  var score = 77;
+  // var bgColor = useColorModeValue('','');
+  // var bgColor1 = useColorModeValue('#33b894', 'teal');
+  var score = 92;
   const navigate = useNavigate();
   const data = [
     { name: 'Eye-Contact', percentage: 40 },
@@ -40,11 +39,14 @@ const App = () => {
   ];
   const totalPercentage = scorechart.reduce((sum, item) => sum + item.percentage, 0);
   const isSuccess = score >= 50;
-
+  var bgColor = useColorModeValue('#4682B4', '#2C3863');
+  var bgColor1 = useColorModeValue(isSuccess ? '#33b894' : 'red', isSuccess ? 'teal' :'#B90E0A');
+  const textColor = useColorModeValue(isSuccess ? 'teal' : 'red', isSuccess ? 'teal' : '#B90E0A');
+  // const textColor = useColorModeValue('black', 'white');
   useEffect(() => {
     const delay = setTimeout(() => {
       setLoading(false);
-    }, 1000); // Simulating a 2-second loading delay
+    }, 10000); // Simulating a 2-second loading delay
 
     return () => clearTimeout(delay); // Clear the timeout if the component unmounts
   }, []);
@@ -79,7 +81,7 @@ const App = () => {
             </Box>
         <div className="main-container">
           <div className="chart-container" style={{ marginLeft: '10%', marginRight: 'auto' }}>
-            <ResponsiveContainer width="80%" height={500}>
+            <ResponsiveContainer width="90%" height={500}>
               <BarChart data={data}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name"/>
@@ -138,7 +140,7 @@ const App = () => {
                 </Text>
                 <br />
                 Assessment Score :{' '}
-                <Text as={'span'} color={isSuccess ? 'teal.600' : 'red.600'}>
+                <Text as={'span'} color={isSuccess ? 'teal.600' : 'red.500'}>
                   {` ${score}%`}
                 </Text>
               </Heading>
