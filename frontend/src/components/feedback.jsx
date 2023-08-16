@@ -44,7 +44,11 @@ export default function Feedback() {
   if (loading) {
     return (
       <Center minHeight="100vh">
-        <Spinner size="md" color="teal" /><p> &nbsp;&nbsp;Loading...</p>
+        <Spinner s  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='teal.500'
+  size='xl' /><p> &nbsp;&nbsp;Loading...</p>
       </Center>
     );
   }
