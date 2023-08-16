@@ -118,8 +118,14 @@ const CameraApp = () => {
   if (!showComponent) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-        <Spinner size="md" color="teal" />
-        <p> &nbsp;Loading...</p>
+        <Spinner
+          thickness='4px'
+          speed='0.65s'
+          emptyColor='gray.200'
+          color='teal.500'
+          size='xl'
+        />
+        <p style={{ fontSize: '20px' }}> &nbsp;Loading...</p>
       </div>
     );
   }

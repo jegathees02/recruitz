@@ -17,10 +17,14 @@ import {
   useDisclosure,
   Text,
   Heading,
+  useColorModeValue
 } from '@chakra-ui/react';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
+  const bgColor = useColorModeValue('#4682B4','#2C3863');
+  const bgColor1 = useColorModeValue('#33b894', 'teal');
+  const textColor = useColorModeValue('black', 'white');
   var score = 77;
   const navigate = useNavigate();
   const data = [
@@ -52,8 +56,14 @@ const App = () => {
 
       {loading ? (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-          <Spinner size="md" color="teal" />
-          <p> &nbsp;Loading...</p>
+          <Spinner
+            thickness='4px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='teal.500'
+            size='xl'
+          />
+          <p style={{fontSize:'20px'}}> &nbsp;Loading...</p>
         </div>
       ) : (
         <>
@@ -85,7 +95,7 @@ const App = () => {
                 {scorechart.map((item, index) => {
                   const startAngle = index === 0 ? 0 : scorechart.slice(0, index).reduce((sum, prevItem) => sum + (prevItem.percentage / totalPercentage) * 360, 0);
                   const endAngle = (item.percentage / totalPercentage) * 360 + startAngle;
-                  const color = isSuccess ? (index === 0 ? '#33b864' : 'gray') : (index === 0 ? ' #33b864' : 'gray');
+                  const color = isSuccess ? (index === 0 ? `${bgColor1}` : `${bgColor}`) : (index === 0 ? `${bgColor1}` : `${bgColor}`);
                   const startAngleRadians = (startAngle - 90) * (Math.PI / 180);
                   const endAngleRadians = (endAngle - 90) * (Math.PI / 180);
                   const startX = Math.cos(startAngleRadians) * 100 + 200;
@@ -100,7 +110,8 @@ const App = () => {
                       fill="none"
                       stroke={color}
                       strokeWidth="20"
-                      strokeLinecap="round"
+                      strokeLinecap="square"
+                      strokeOpacity="1" // Set the border color and opacity here
                       style={{
                         animation: `fillAnimation${index} 2s forwards, rotateAnimation 2s linear infinite`,
                         animationDelay: `${index * 0.9}s`,
@@ -108,7 +119,7 @@ const App = () => {
                     />
                   );
                 })}
-                <text x="200" y="200" textAnchor="middle" dominantBaseline="middle" fontSize="29" fill="#3C4869">
+                <text x="200" y="200" textAnchor="middle" dominantBaseline="middle" fontSize="29" fill={`${textColor}`}>
                   {score}%
                 </text>
               </svg>
@@ -131,6 +142,7 @@ const App = () => {
                 </Text>
               </Heading>
             </div>
+            <Box style={{ display:'flex',justifyContent:'center'}}>
             <Button
               variant={'outline'}
               borderColor={'teal'}
@@ -138,11 +150,12 @@ const App = () => {
               size="md"
               onClick={onOpen}
               width="150px"
-              marginLeft={220}
+              // marginLeft={250}
             >
               <FcIdea />
               Suggestions
             </Button>
+            </Box>
             <SuggestionsModal isOpen={isOpen} onClose={onClose} />
           </div>
         </div>
