@@ -66,7 +66,7 @@ const navigate=useNavigate();
           <HStack spacing={8} alignItems={'center'}>
             <Box display={'flex'}>
               <img src={logo} alt='logo' width={50} />
-              <Text mt={2} fontFamily={'fantasy'} fontSize={'2xl'}>&nbsp;Persona<span style={{color:'teal'}}>Scan</span></Text>
+              <Text mt={2} fontFamily={'fantasy'} fontSize={'2xl'}>&nbsp;Recruitz</Text>
             </Box>
             <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
               {Links.map((link) => (

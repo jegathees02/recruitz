@@ -21,7 +21,7 @@ import {
 
 const App = () => {
   const [loading, setLoading] = useState(true);
-  var score = 74;
+  var score = 7;
   const navigate = useNavigate();
   const data = [
     { name: 'Eye-Contact', percentage: 40 },
@@ -48,97 +48,106 @@ const App = () => {
 
   return (
     <>
-      <NavBar />
-      <Box>
-        <Button variant={'outline'} borderColor={'teal'} marginLeft={5} marginTop={5} onClick={() => navigate('/camera')}>
-          <ArrowBackIcon /> Back
-        </Button>
-        <Button variant={'outline'} borderColor={'teal'} marginLeft={"80%"} marginTop={5} onClick={() => navigate('/feedback')}>
-          <ArrowBackIcon /> Feedback
-        </Button>
-      </Box>
+     
 
-      <div className="main-container">
-        <div className="chart-container" style={{ marginLeft: '15%', marginRigt: 'auto' }}>
-          <ResponsiveContainer width="75%" height={500}>
-            <BarChart data={data}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis tickFormatter={(value) => `${value}%`} />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="percentage" fill=" #2C3863 " />
-            </BarChart>
-          </ResponsiveContainer>
+      {loading ? (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <Spinner size="md" color="teal" />
+          <p> &nbsp;Loading...</p>
         </div>
-        <div className="svg-heading-container">
-          <div className="svg-container">
-            <svg width="400" height="400">
-              {scorechart.map((item, index) => {
-                const startAngle = index === 0 ? 0 : scorechart.slice(0, index).reduce((sum, prevItem) => sum + (prevItem.percentage / totalPercentage) * 360, 0);
-                const endAngle = (item.percentage / totalPercentage) * 360 + startAngle;
-                const color = isSuccess ? (index === 0 ? '#33b864' : 'gray') : (index === 0 ? ' #33b864' : 'gray');
-                const startAngleRadians = (startAngle - 90) * (Math.PI / 180);
-                const endAngleRadians = (endAngle - 90) * (Math.PI / 180);
-
-                const startX = Math.cos(startAngleRadians) * 100 + 200;
-                const startY = Math.sin(startAngleRadians) * 100 + 200;
-
-                const endX = Math.cos(endAngleRadians) * 100 + 200;
-                const endY = Math.sin(endAngleRadians) * 100 + 200;
-
-                return (
-                  <path
-                    key={item.name}
-                    d={`M${startX} ${startY} A 100 100 0 ${endAngle - startAngle > 180 ? 1 : 0} 1 ${endX} ${endY}`}
-                    fill="none"
-                    stroke={color}
-                    strokeWidth="20"
-                    strokeLinecap="round"
-                    style={{
-                      animation: `fillAnimation${index} 2s forwards, rotateAnimation 2s linear infinite`,
-                      animationDelay: `${index * 0.9}s`,
-                    }}
-                  />
-                );
-              })}
-              <text x="200" y="200" textAnchor="middle" dominantBaseline="middle" fontSize="29" fill="#3C4869">
-                {score}%
-              </text>
-            </svg>
+      ) : (
+        <>
+            <NavBar />
+            <Box>
+              <Button variant={'outline'} borderColor={'teal'} marginLeft={5} marginTop={5} onClick={() => navigate('/camera')}>
+                <ArrowBackIcon /> Back
+              </Button>
+              <Button variant={'outline'} borderColor={'teal'} marginLeft={"80%"} marginTop={5} onClick={() => navigate('/feedback')}>
+                <ArrowBackIcon /> Feedback
+              </Button>
+            </Box>
+        <div className="main-container">
+          <div className="chart-container" style={{ marginLeft: '10%', marginRight: 'auto' }}>
+            <ResponsiveContainer width="80%" height={500}>
+              <BarChart data={data}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis tickFormatter={(value) => `${value}%`} />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="percentage" fill=" #2C3863 " />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
-          <div className="assessment-heading">
-            <Heading
-              padding={5}
-              textAlign={'center'}
-              fontWeight={600}
-              fontSize={{ base: '2xl', sm: '4xl', md: '4xl' }}
-              lineHeight={'110%'}>
-              Your{' '}
-              <Text as={'span'} color={'teal.600'}>
-                Personality
-              </Text>
-              <br />
-              Assessment Score :{' '}
-              <Text as={'span'} color={isSuccess ? 'teal.600' : 'red.600'}>
-                {` ${score}%`}
-              </Text>
-            </Heading>
+          <div className="svg-heading-container">
+            <div className="svg-container">
+              <svg width="400" height="400">
+                {scorechart.map((item, index) => {
+                  const startAngle = index === 0 ? 0 : scorechart.slice(0, index).reduce((sum, prevItem) => sum + (prevItem.percentage / totalPercentage) * 360, 0);
+                  const endAngle = (item.percentage / totalPercentage) * 360 + startAngle;
+                  const color = isSuccess ? (index === 0 ? '#33b864' : 'gray') : (index === 0 ? ' #33b864' : 'gray');
+                  const startAngleRadians = (startAngle - 90) * (Math.PI / 180);
+                  const endAngleRadians = (endAngle - 90) * (Math.PI / 180);
+                  const startX = Math.cos(startAngleRadians) * 100 + 200;
+                  const startY = Math.sin(startAngleRadians) * 100 + 200;
+                  const endX = Math.cos(endAngleRadians) * 100 + 200;
+                  const endY = Math.sin(endAngleRadians) * 100 + 200;
+
+                  return (
+                    <path
+                      key={item.name}
+                      d={`M${startX} ${startY} A 100 100 0 ${endAngle - startAngle > 180 ? 1 : 0} 1 ${endX} ${endY}`}
+                      fill="none"
+                      stroke={color}
+                      strokeWidth="20"
+                      strokeLinecap="round"
+                      style={{
+                        animation: `fillAnimation${index} 2s forwards, rotateAnimation 2s linear infinite`,
+                        animationDelay: `${index * 0.9}s`,
+                      }}
+                    />
+                  );
+                })}
+                <text x="200" y="200" textAnchor="middle" dominantBaseline="middle" fontSize="29" fill="#3C4869">
+                  {score}%
+                </text>
+              </svg>
+            </div>
+            <div className="assessment-heading">
+              <Heading
+                padding={5}
+                textAlign={'center'}
+                fontWeight={600}
+                fontSize={{ base: '2xl', sm: '4xl', md: '4xl' }}
+                lineHeight={'110%'}>
+                Your{' '}
+                <Text as={'span'} color={'teal.600'}>
+                  Personality
+                </Text>
+                <br />
+                Assessment Score :{' '}
+                <Text as={'span'} color={isSuccess ? 'teal.600' : 'red.600'}>
+                  {` ${score}%`}
+                </Text>
+              </Heading>
+            </div>
+            <Button
+              variant={'outline'}
+              borderColor={'teal'}
+              marginTop={2}
+              size="md"
+              onClick={onOpen}
+              width="150px"
+              marginLeft={220}
+            >
+              <FcIdea />
+              Suggestions
+            </Button>
+            <SuggestionsModal isOpen={isOpen} onClose={onClose} />
           </div>
-          <Button
-            variant={'outline'} borderColor={'teal'}
-            marginTop={2}
-            size="md"
-            onClick={onOpen}
-            width="150px"
-            marginLeft={220}
-          >
-            <FcIdea />
-            Suggestions
-          </Button>
-          <SuggestionsModal isOpen={isOpen} onClose={onClose} />
         </div>
-      </div>
+        </>
+      )}
       <style>
         {scorechart.map((item, index) => (
           `@keyframes fillAnimation${index} {
@@ -146,7 +155,7 @@ const App = () => {
               stroke-dasharray: 0 1000;
             }
             100% {
-              stroke-dasharray: ${(item.percentage / totalPercentage) * 720} 10;
+              stroke-dasharray: ${(item.percentage / totalPercentage) * 1440} 10;
             }
           }`
         ))}
