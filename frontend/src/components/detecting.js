@@ -82,19 +82,21 @@ const CameraApp = () => {
 
   const sendVideoToBackend = async (videoBlob) => {
     try {
-      const formData = new FormData();
-      formData.append('video', videoBlob, 'video.webm');
+        const formData = new FormData();
+        formData.append('videoData', videoBlob);
 
-      const response = await fetch('YOUR_PYTHON_BACKEND_URL', {
-        method: 'POST',
-        body: formData,
-      });
-      const responseData = await response.json();
-      console.log(responseData);
+        const response = await fetch('http://localhost:5000/upload_video_new', {
+            method: 'POST',
+            body: formData,
+        });
+
+        const responseData = await response.json();
+        console.log(responseData);
     } catch (error) {
-      console.error('Error sending data to backend:', error);
+        console.error('Error sending data to backend:', error);
     }
-  };
+};
+
 
   const formatTime = (timeInSeconds) => {
     const hours = Math.floor(timeInSeconds / 3600);

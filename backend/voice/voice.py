@@ -13,9 +13,6 @@ def main(video_path):
     mono_audio = np.mean(audio, axis=1)
     sr = audio.shape[0] / video.duration    
     boldness = calculate_boldness(mono_audio, sr)
+    return boldness*1000
+    # print(f"Boldness Percentage: {boldness * 1000:.2f}%")
 
-    print(f"Boldness Percentage: {boldness * 1000:.2f}%")
-
-if __name__ == "__main__":
-    video_path = "/home/jegathees5555/Documents/recruitz/backend/voice/sample_voice1.mp4"
-    main(video_path)
