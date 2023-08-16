@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
-import { FaVideo ,FaCircle,FaExpand} from 'react-icons/fa';
+import { FaVideo ,FaCircle,FaExpand,FaArrowRight} from 'react-icons/fa';
 import NavBar from '../components/navbar';
-import { Box, useColorModeValue, Button, HStack, Text } from '@chakra-ui/react';
+import {FcNews} from 'react-icons/fc';
+import { useNavigate } from 'react-router-dom';
+import {
+  Box, useColorModeValue, Button, HStack, Text, Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+  Checkbox,
+  CheckboxGroup,
+} from '@chakra-ui/react';
 import { Spinner } from '@chakra-ui/react';
-
 const CameraApp = () => {
+  const Navigate=useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const bgColor = useColorModeValue('gray.100', 'gray.700');
   const [showComponent, setShowComponent] = useState(false);
   const [isCameraOpen, setIsCameraOpen] = useState(false);
@@ -14,6 +28,13 @@ const CameraApp = () => {
   const [startTime, setStartTime] = useState(0); // Track recording start time
   const [elapsedTime, setElapsedTime] = useState(0); // Track elapsed time
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [agreed, setAgreed] = useState(false);
+  const [error,setError]=useState('');
+  const handleAgreementChange = () => {
+    setError('');
+    setAgreed(!agreed);
+  };
+
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
   };
@@ -46,7 +67,11 @@ const CameraApp = () => {
       clearInterval(interval);
     };
   }, [isCameraOpen, startTime]);
-
+  const handleStartCamera = () => {
+    // Open the modal
+    onOpen();
+  };
+  
   const stopCamera = () => {
     if (mediaRecorder) {
       mediaRecorder.stop();
@@ -60,13 +85,23 @@ const CameraApp = () => {
       const videoBlob = new Blob(chunksRef.current, { type: 'video/webm' });
       sendVideoToBackend(videoBlob);
       chunksRef.current = [];
+      Navigate('/result');
     } else {
       console.log('No video data to submit');
     }
   };
-  const startCamera = async () => {
+  const startCamera =async()=>{
+    if(agreed){
+      startCamera1();
+    }
+    else{
+         setError('Please Agree Terms And Conditions')
+    }
+  }
+  const startCamera1 = async () => {
+    onClose();
     const stream = await navigator.mediaDevices.getUserMedia({ video: true ,audio:true});
-
+      
     const recorder = new MediaRecorder(stream, {
       mimeType: 'video/webm',
     });
@@ -201,15 +236,78 @@ const CameraApp = () => {
       </Box>
 
       <HStack spacing={40} pt={5} justifyContent={'center'}>
-        <Button onClick={isCameraOpen ? stopCamera : startCamera} variant={'outline'} color={'teal'} borderColor={'teal'}>
-          {isCameraOpen ? 'Stop Camera' : 'Start Camera'}
+        <Button onClick={isCameraOpen ? stopCamera : handleStartCamera} variant={'outline'} color={'teal'} borderColor={'teal'}>
+          {isCameraOpen ? 'Stop Camera' : 'Start Test'}
         </Button>
         <Button onClick={handleSubmitVideo} variant={'solid'} backgroundColor={'teal'} isDisabled={chunksRef.current.length === 0}>
-            Submit Video
+            End Test
           </Button>
       </HStack>
+      <Modal isCentered onClose={onClose} isOpen={isOpen} motionPreset='slideInBottom'>
+        <ModalOverlay />
+        <ModalContent maxW="1000px">
+          <ModalHeader display="flex" alignItems="center" >
+           <FcNews/> &nbsp;Note :
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {/* Replace this with your desired content */}
+            <Text fontWeight="bold" fontSize="1.2rem" marginBottom="0.5rem">
+              Mindset and Confidence:
+            </Text>
+            <Text fontSize="1rem" marginBottom="1.5rem">
+              Approach the interview with a positive mindset and confidence. Remember that the mock interview is an opportunity to learn and improve.
+            </Text>
+
+            <Text fontWeight="bold" fontSize="1.2rem" marginBottom="0.5rem">
+              Body Language:
+            </Text>
+            <Text fontSize="1rem" marginBottom="1.5rem">
+              Maintain good eye contact, sit up straight, and use appropriate hand gestures. Good body language can enhance your communication.
+            </Text>
+
+            <Text fontWeight="bold" fontSize="1.2rem" marginBottom="0.5rem">
+              Stay Calm:
+            </Text>
+            <Text fontSize="1rem" marginBottom="1.5rem">
+              If you get stuck on a question, take a deep breath and don't be afraid to ask for clarification. It's okay to take a moment to gather your thoughts.
+            </Text>
+            <Text fontWeight="bold" fontSize="1.2rem" marginBottom="0.5rem" color={'red'}>
+              Terms and Conditions:
+            </Text>
+            <Text fontSize="1rem" marginBottom="1.5rem">
+              By proceeding, you agree to the following terms and conditions:
+            </Text>
+            <Text fontSize="0.9rem" marginBottom="1.5rem" pl="2rem">
+              - The mock interview assessment is for learning and practice purposes only.
+            </Text>
+            <Text fontSize="0.9rem" marginBottom="1.5rem" pl="2rem">
+              - Any video recordings or data generated during the assessment will not be shared or used for any other purpose without your consent.
+            </Text>
+            <Text fontSize="0.9rem" marginBottom="1.5rem" pl="2rem">
+              - You are responsible for ensuring your surroundings and behavior during the assessment are appropriate and professional.
+            </Text>
+            <CheckboxGroup>
+              <Checkbox isChecked={agreed} onChange={handleAgreementChange}>
+                I have read and agree to the terms and conditions.
+              </Checkbox>
+              <p style={{color:'red'}}>
+              {error}
+              </p>
+            </CheckboxGroup>
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme='' variant='ghost'mr={700} onClick={onClose}>
+              Close
+            </Button>
+            <Button colorScheme='teal' onClick={startCamera}>Proceed <FaArrowRight/></Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 };
 
 export default CameraApp;
+
+

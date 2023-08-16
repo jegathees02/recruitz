@@ -124,7 +124,7 @@ const navigate=useNavigate();
                 </Center>
                 <br />
                 <MenuDivider />
-                <MenuItem>Account Settings</MenuItem>
+                <MenuItem onClick={()=>{navigate('/edit')}}>Account Settings</MenuItem>
                 <MenuItem>Logout</MenuItem>
               </MenuList>
             </Menu>
