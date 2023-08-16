@@ -3,7 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { Button, Box, Spinner } from '@chakra-ui/react';
 import NavBar from '../components/navbar';
 import '../styles/result.css'; // Import the CSS file for styling
-import { ArrowBackIcon } from '@chakra-ui/icons';
+import { ArrowBackIcon ,ArrowForwardIcon} from '@chakra-ui/icons';
 import { FcIdea } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -63,7 +63,7 @@ const App = () => {
                 <ArrowBackIcon /> Back
               </Button>
               <Button variant={'outline'} borderColor={'teal'} marginLeft={"80%"} marginTop={5} onClick={() => navigate('/feedback')}>
-                <ArrowBackIcon /> Feedback
+                Feedback <ArrowForwardIcon /> 
               </Button>
             </Box>
         <div className="main-container">

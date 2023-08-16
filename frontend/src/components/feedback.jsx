@@ -10,10 +10,12 @@ import {
   Image,
   Button,   
   SimpleGrid,
+  Spinner
 } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import NavBar from '../components/navbar';
 import { useNavigate } from 'react-router-dom';
+import { useState,useEffect } from 'react';
 const BOLD =
 'https://res.cloudinary.com/dyizhabab/image/upload/v1692195555/boldness_nn97ih.jpg'
   // 'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'
@@ -28,7 +30,24 @@ const CLARITY =
   // 'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'
  
 export default function Feedback() {
-    const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const bgcolor=useColorModeValue('white', 'gray.800');
+  const navigate = useNavigate();
+  useEffect(() => {
+    const loaderTimeout = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(loaderTimeout);
+  }, []);
+
+  if (loading) {
+    return (
+      <Center minHeight="100vh">
+        <Spinner size="md" color="teal" /><p> &nbsp;&nbsp;Loading...</p>
+      </Center>
+    );
+  }
   return (
     <>
         <NavBar />
@@ -53,7 +72,7 @@ export default function Feedback() {
         p={6}
         maxW={'530px'}
         w={'full'}
-        bg={useColorModeValue('white', 'gray.800')}
+        bg={bgcolor}
         boxShadow={'2xl'}
         rounded={'lg'}
         pos={'relative'}
@@ -112,7 +131,7 @@ Use Pauses Effectively: Incorporate well-timed pauses into your speech. Pauses g
         p={6}
         maxW={'530px'}
         w={'full'}
-        bg={useColorModeValue('white', 'gray.800')}
+        bg={bgcolor}
         boxShadow={'2xl'}
         rounded={'lg'}
         pos={'relative'}
@@ -173,7 +192,7 @@ Use Pauses Effectively: Incorporate well-timed pauses into your speech. Pauses g
         p={6}
         maxW={'530px'}
         w={'full'}
-        bg={useColorModeValue('white', 'gray.800')}
+        bg={bgcolor}
         boxShadow={'2xl'}
         rounded={'lg'}
         pos={'relative'}
@@ -233,7 +252,7 @@ Use Pauses Effectively: Incorporate well-timed pauses into your speech. Pauses g
         p={6}
         maxW={'530px'}
         w={'full'}
-        bg={useColorModeValue('white', 'gray.800')}
+        bg={bgcolor}
         boxShadow={'2xl'}
         rounded={'lg'}
         pos={'relative'}
