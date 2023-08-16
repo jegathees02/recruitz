@@ -59,7 +59,7 @@ const App = () => {
       </Box>
 
       <div className="main-container">
-        <div className="chart-container" style={{ marginLeft: '280px', marginRigt: 'auto' }}>
+        <div className="chart-container" style={{ marginLeft: '15%', marginRigt: 'auto' }}>
           <ResponsiveContainer width="75%" height={500}>
             <BarChart data={data}>
               <CartesianGrid strokeDasharray="3 3" />
