@@ -51,7 +51,7 @@ and confront adversities.
               _hover={{
                 bg: 'teal.500',
               }}
-              onClick={()=>navigate('/camera')}
+              onClick={()=>navigate('/login')}
               >
               Get Started
             </Button>

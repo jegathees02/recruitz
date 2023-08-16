@@ -42,7 +42,7 @@ const CameraApp = () => {
   useEffect(() => {
     const delay = setTimeout(() => {
       setShowComponent(true);
-    }, 1000);
+    }, 300);
 
     return () => {
       clearTimeout(delay);

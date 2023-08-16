@@ -28,6 +28,7 @@ function SignupCard() {
     // Simulate a 2-second delay for signing up
     setTimeout(() => {
       setIsLoading(false);
+      navigate('/camera');
     }, 2000);
   };
 
@@ -123,8 +124,13 @@ export default function App() {
         <SignupCard />
       ) : (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-        <Spinner size="md" color="teal" />
-        <p > &nbsp;Loading...</p>
+            <Spinner
+              thickness='4px'
+              speed='0.65s'
+              emptyColor='gray.200'
+              color='teal.500'
+              size='xl'
+            />
       </div>
       )}
     </div>

@@ -13,8 +13,9 @@ import {
   useColorModeValue,
   Spinner
 } from '@chakra-ui/react';
-
+import { useNavigate } from 'react-router-dom';
 export default function App() {
+  const navigate=useNavigate();
   const [showCard, setShowCard] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,13 +37,12 @@ export default function App() {
 
   const handleSignIn = () => {
     setIsLoading(true);
-
-    // Simulate a 2-second delay for sign-in
     setTimeout(() => {
       setIsLoading(false);
+      navigate('/camera');
     }, 2000);
+   
   };
-
   return (
     <div>
       {showCard ? (
@@ -99,8 +99,14 @@ export default function App() {
         </Flex>
       ) : (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-          <Spinner size="md" color="teal" />
-          <p > &nbsp;Loading...</p>
+            <Spinner
+              thickness='4px'
+              speed='0.65s'
+              emptyColor='gray.200'
+              color='teal.500'
+              size='xl'
+            />
+            <p> &nbsp; Loading</p>
         </div>
       )}
     </div>
