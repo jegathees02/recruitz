@@ -44,7 +44,11 @@ export default function Feedback() {
   if (loading) {
     return (
       <Center minHeight="100vh">
-        <Spinner size="md" color="teal" /><p> &nbsp;&nbsp;Loading...</p>
+        <Spinner s  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='teal.500'
+  size='xl' /><p> &nbsp;&nbsp;Loading...</p>
       </Center>
     );
   }
@@ -117,10 +121,7 @@ export default function Feedback() {
           </Heading>
           <Stack direction={'row'} align={'center'}>
             <Text>
-           Speak Slowly and Clearly: Avoid rushing through your words. Speak at a moderate pace, enunciating each word clearly. Slow down when discussing complex or important points, giving your listener time to absorb the information.
-
-Articulate Your Words: Pay attention to how you pronounce each syllable and word. Articulate consonants and vowels distinctly, and avoid mumbling or slurring. Practice speaking aloud to improve your pronunciation and diction.
-Use Pauses Effectively: Incorporate well-timed pauses into your speech. Pauses give your audience time to process what you're saying and emphasize key points. They also provide you with a moment to gather your thoughts, enhancing overall clarity.
+            One area of improvement for your interview skills is your eye contact. Eye contact is important because it shows confidence, interest and respect for the interviewer. According to some studies, the optimal eye contact percentage is around 60-70%. You made eye contact only 40% of the time, which might have given the impression that you were nervous, distracted or uninterested. To improve your eye contact, you can practice with a friend or a mirror, and try to maintain a natural and comfortable gaze. Avoid staring too intensely or looking away too frequently. 
 </Text>
           </Stack>
         </Stack>
@@ -176,11 +177,7 @@ Use Pauses Effectively: Incorporate well-timed pauses into your speech. Pauses g
           </Heading>
           <Stack direction={'row'} align={'center'}>
             <Text>
-           Speak Slowly and Clearly: Avoid rushing through your words. Speak at a moderate pace, enunciating each word clearly. Slow down when discussing complex or important points, giving your listener time to absorb the information.
-
-Articulate Your Words: Pay attention to how you pronounce each syllable and word. Articulate consonants and vowels distinctly, and avoid mumbling or slurring. Practice speaking aloud to improve your pronunciation and diction.
-
-Use Pauses Effectively: Incorporate well-timed pauses into your speech. Pauses give your audience time to process what you're saying and emphasize key points. They also provide you with a moment to gather your thoughts, enhancing overall clarity.
+            You showed a good level of confidence during the interview, which is important for communicating your skills and abilities. However, you also need to balance your confidence with humility and respect for others. Sometimes, you came across as too self-assured or arrogant, which might create a negative impression on the interviewer. Try to be more aware of how you present yourself and avoid making statements that might sound boastful or dismissive of other people's opinions or experiences.
 </Text>
           </Stack>
         </Stack>
@@ -237,11 +234,7 @@ Use Pauses Effectively: Incorporate well-timed pauses into your speech. Pauses g
           </Heading>
           <Stack direction={'row'} align={'center'}>
             <Text>
-           Speak Slowly and Clearly: Avoid rushing through your words. Speak at a moderate pace, enunciating each word clearly. Slow down when discussing complex or important points, giving your listener time to absorb the information.
-
-Articulate Your Words: Pay attention to how you pronounce each syllable and word. Articulate consonants and vowels distinctly, and avoid mumbling or slurring. Practice speaking aloud to improve your pronunciation and diction.
-
-Use Pauses Effectively: Incorporate well-timed pauses into your speech. Pauses give your audience time to process what you're saying and emphasize key points. They also provide you with a moment to gather your thoughts, enhancing overall clarity.
+            One of the areas that you need to improve on is your clarity of speech. During the interview, I noticed that you were speaking very softly and mumbling your words, which made it hard for me to understand your answers. This can affect your chances of getting hired, as employers want to communicate effectively with their employees. You should practice speaking louder and more confidently, and enunciate your words clearly. This will help you convey your ideas better and make a good impression.
 </Text>
           </Stack>
         </Stack>
@@ -297,11 +290,8 @@ Use Pauses Effectively: Incorporate well-timed pauses into your speech. Pauses g
           </Heading>
           <Stack direction={'row'} align={'center'}>
             <Text>
-           Speak Slowly and Clearly: Avoid rushing through your words. Speak at a moderate pace, enunciating each word clearly. Slow down when discussing complex or important points, giving your listener time to absorb the information.
+            I think the guy who makes his boldness 100% while attending an interview is confident and assertive. He shows that he is not afraid to speak his mind and express his opinions. He also demonstrates that he can handle challenging situations and deal with criticism. However, he should also be careful not to come across as arrogant or rude. He should balance his boldness with respect and humility. He should listen to the interviewer's questions and feedback, and acknowledge his strengths and weaknesses. He should also show interest and enthusiasm for the job and the company.
 
-Articulate Your Words: Pay attention to how you pronounce each syllable and word. Articulate consonants and vowels distinctly, and avoid mumbling or slurring. Practice speaking aloud to improve your pronunciation and diction.
-
-Use Pauses Effectively: Incorporate well-timed pauses into your speech. Pauses give your audience time to process what you're saying and emphasize key points. They also provide you with a moment to gather your thoughts, enhancing overall clarity.
 </Text>
           </Stack>
         </Stack>
