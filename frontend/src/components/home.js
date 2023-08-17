@@ -26,9 +26,9 @@ export default function CallToActionWithAnnotation() {
             fontWeight={600}
             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
             lineHeight={'110%'}>
-           Find Your Personality<br />
+           Build your confidence<br />
             <Text as={'span'} color={'teal.400'}>
-              on by click
+              on interviews by click
             </Text>
           </Heading>
           <Text color={'gray.500'}>

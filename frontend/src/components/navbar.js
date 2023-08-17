@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../assets/depression.png';
+import { Link } from 'react-router-dom';
+
 import {
   Box,
   Flex,
@@ -24,7 +26,12 @@ import { useNavigate } from 'react-router-dom';
 interface Props {
   children: React.ReactNode;
 }
-const Links = ['Home', 'About', 'Feedback',];
+// const Links = ['Home', 'About', 'Feedback',];
+const Links = [
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Feedback', path: '/feedbackuser' },
+];
 const Links1 = ['Home', 'About', 'Feedback','SignUp','Login'];
 const NavLink = (props: Props) => {
   const { children } = props;
@@ -69,10 +76,12 @@ const navigate=useNavigate();
               <Text mt={2} fontFamily={'fantasy'} fontSize={'2xl'}>&nbsp;Recruitz</Text>
             </Box>
             <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                <Button  key={link} variant={'link'} padding={5} >{link}</Button>
-              ))}
-            </HStack>
+  {Links.map((link) => (
+    <Button key={link.label} variant={'link'} padding={5} onClick={() => navigate(link.path)}>
+      {link.label}
+    </Button>
+  ))}
+</HStack>
           </HStack>
           <HStack alignItems={'center'} spacing={10}>
             <Button onClick={toggleColorMode}>
@@ -120,11 +129,12 @@ const navigate=useNavigate();
                 </Box>
                 <br />
                 <Center>
-                  <Text>Username</Text>
+                  <Text>Sample User</Text>
                 </Center>
                 <br />
                 <MenuDivider />
                 <MenuItem onClick={()=>{navigate('/edit')}}>Account Settings</MenuItem>
+                <MenuItem onClick={()=>{navigate('/userdetails')}}>User Registration</MenuItem>
                 <MenuItem>Logout</MenuItem>
               </MenuList>
             </Menu>

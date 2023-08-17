@@ -14,11 +14,14 @@ import {
     IconButton,
     Center,
 } from '@chakra-ui/react'
+import NavBar from '../components/navbar';
 import { SmallCloseIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
 export default function UserProfileEdit() {
     const navigate=useNavigate();
     return (
+        <>
+        <NavBar/>
         <Flex
             minH={'100vh'}
             align={'center'}
@@ -104,5 +107,6 @@ export default function UserProfileEdit() {
                 </Stack>
             </Stack>
         </Flex>
+        </>
     )
 }

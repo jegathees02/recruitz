@@ -7,6 +7,8 @@ import Login from'./components/login'
 import Signup from'./components/signup'
 import Feedback from './components/feedback';
 import Edit from './components/edit'
+import Feedbackuser from './components/feedbackuser';
+import Userdetails from './components/userdetails';
 function App() {
   return (
     <div>
@@ -19,6 +21,8 @@ function App() {
         <Route path='/signup'element={<Signup/>}/>
         <Route path='/feedback'element={<Feedback/>}/>
         <Route path='/edit' element={<Edit/>} />
+        <Route path='/feedbackuser' element={<Feedbackuser/>} />
+        <Route path='/userdetails' element={<Userdetails/>} />
       </Routes>
       </BrowserRouter>
     </div>
