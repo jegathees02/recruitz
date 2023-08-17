@@ -108,7 +108,7 @@ const navigate=useNavigate();
               Login
             </Button>
             </>
-            ) : (<> {localStorage.getItem('auth')}</>)
+            ) : (<> </>)
 }
             <Menu>
               <MenuButton
