@@ -169,7 +169,9 @@ const CameraApp = () => {
     <div>
       <NavBar />
       <Text fontFamily={'cursive'} fontSize={'2xl'} width={'100%'} align={'center'} p={2}>PersonaScan: Discover Your Inner Self  .!</Text>
-
+      <div style={{width:'22%',alignItems:'center',justifyContent:'center'}}>
+        <Text fontFamily={'cursive'} fontSize={'2xl'} width={'100%'} align={'left'} p={2}>Tell about your Self :</Text>
+      </div>
       <Box  bg={bgColor}style={{
         position: 'relative',
         width: '100%',
@@ -183,6 +185,7 @@ const CameraApp = () => {
         
         height: isCameraOpen ? 'auto' : '500px', // Adjust the height when the camera is open or closed
       }}>
+       
         {isCameraOpen ? (
   <div style={{ position: 'relative', width: '100%', paddingBottom: '62.5%' }}>
     <Webcam
@@ -227,10 +230,12 @@ const CameraApp = () => {
       onClick={toggleFullScreen}
     >
       <FaExpand size={24} />
+   
     </div>
   </div>
 ) : (
   <FaVideo size={100} />
+  
 )}
 
       </Box>

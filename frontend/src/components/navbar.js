@@ -87,7 +87,8 @@ const navigate=useNavigate();
             <Button onClick={toggleColorMode}>
               {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
             </Button>
-
+            {!localStorage.getItem('auth')?(
+              <>
             <Button
               variant={'link'}
               colorScheme={'teal'}
@@ -106,6 +107,9 @@ const navigate=useNavigate();
             >
               Login
             </Button>
+            </>
+            ) : (<> {localStorage.getItem('auth')}</>)
+}
             <Menu>
               <MenuButton
                 as={Button}

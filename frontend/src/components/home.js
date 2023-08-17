@@ -13,6 +13,7 @@ import NavBar from '../components/navbar'
 import { useNavigate } from 'react-router-dom'
 export default function CallToActionWithAnnotation() {
   const navigate=useNavigate();
+  localStorage.setItem('auth',false);
   return (
     <>
     <NavBar/>

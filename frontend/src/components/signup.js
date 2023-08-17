@@ -24,6 +24,7 @@ function SignupCard() {
   const [isLoading, setIsLoading] = useState(false);
    const navigate=useNavigate();
   const handleSubmit = () => {
+    localStorage.setItem('auth',true);
     setIsLoading(true);
     // Simulate a 2-second delay for signing up
     setTimeout(() => {

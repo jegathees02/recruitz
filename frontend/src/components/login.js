@@ -36,6 +36,7 @@ export default function App() {
   const buttonColor = useColorModeValue('white', 'white');
 
   const handleSignIn = () => {
+    localStorage.setItem('auth',true);
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
