@@ -12,6 +12,7 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
+  Center,
   useDisclosure,
   Checkbox,
   CheckboxGroup,
@@ -167,13 +168,23 @@ const CameraApp = () => {
 
   return (
     <div>
-      <NavBar />
-      <Text fontFamily={'cursive'} fontSize={'2xl'} width={'100%'} align={'center'} p={2}>Recruitz: Discover Your Inner Self  .!</Text>
-      <div style={{display:'flex'}}>
-      <div style={{marginLeft:"4%",width:'22%',alignItems:'center',justifyContent:'center'}}>
-        <Text fontFamily={'cursive'} fontSize={'20px'} width={'100%'} align={'left'}  p={2}>Tell about yourself{'(1-2) mins'}</Text>
+      <NavBar /><br/><br/>
+      {/* <Text fontFamily={'cursive'} fontSize={'2xl'} width={'100%'} align={'center'} p={2}>Recruitz: Discover Your Inner Self  .!</Text> */}
+      <div bg={bgColor} style={{display:'flex'}}>
+        
+      <div style={{marginLeft:"4%",width:'22%',alignItems:'center',justifyContent:'center',boxShadow:'0px 0px 5px 0px rgba(0, 0, 0, 0.3)',borderRadius:10, width: '100%',
+        maxWidth: '350px',backgroundColor:'#edf2f7'}}>
+          <Center>
+          <div style={{marginTop:"30%"}} >
+        {/* <Text fontFamily={'cursive'} fontSize={'20px'} width={'100%'} align={'left'}  p={2}>Tell about yourself{'(1-2) mins'}</Text> */}
         <Text fontWeight="bold" fontSize="1.2rem" marginBottom="0.5rem">
-              Projects
+              Intoduction :
+            </Text>
+            <Text fontSize="1rem" marginBottom="1.5rem">
+              Tell about yourself{'(1-3) mins'}
+            </Text>
+        <Text fontWeight="bold" fontSize="1.2rem" marginBottom="0.5rem">
+              Projects : 
             </Text>
             <Text fontSize="1rem" marginBottom="1.5rem">
               Tell about your projects{'(2-3) mins'}
@@ -185,7 +196,11 @@ const CameraApp = () => {
             <Text fontSize="1rem" marginBottom="1.5rem">
             Tell about your academics{'(2-4) mins'}
             </Text>
+
+            </div>
+            </Center>
       </div>
+            
       <Box  bg={bgColor}style={{
         position: 'relative',
         width: '100%',

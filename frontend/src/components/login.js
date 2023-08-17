@@ -40,7 +40,7 @@ export default function App() {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      navigate('/camera');
+      navigate('/userdetails');
     }, 2000);
    
   };
@@ -56,7 +56,7 @@ export default function App() {
             <Stack align={'center'}>
               <Heading fontSize={'4xl'}>Sign in to your account</Heading>
               <Text fontSize={'lg'} color={textColor}>
-                to enjoy all of our cool <Text color={linkColor}>features</Text> ✌️
+                {/* to enjoy all of our cool <Text color={linkColor}>features</Text> ✌️ */}
               </Text>
             </Stack>
             <Box

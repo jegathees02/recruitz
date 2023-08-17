@@ -23,10 +23,11 @@ import {
 } from '@chakra-ui/react'
 
 import { useToast } from '@chakra-ui/react'
-
+import { useNavigate } from 'react-router-dom';
 const Form1 = () => {
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)
+
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -293,6 +294,7 @@ export default function Userdetails() {
   const toast = useToast()
   const [step, setStep] = useState(1)
   const [progress, setProgress] = useState(33.33)
+  const navigate=useNavigate();
 
   return (
     <>
@@ -349,9 +351,10 @@ export default function Userdetails() {
                     title: 'Account created.',
                     description: "We've created your account for you.",
                     status: 'success',
-                    duration: 3000,
+                    duration: 500,
                     isClosable: true,
                   })
+                  navigate('/camera');
                 }}>
                 Submit
               </Button>

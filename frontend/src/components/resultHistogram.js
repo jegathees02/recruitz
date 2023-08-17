@@ -25,12 +25,12 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   // var bgColor = useColorModeValue('','');
   // var bgColor1 = useColorModeValue('#33b894', 'teal');
-  var score = 75;
+  var score = 80;
   const navigate = useNavigate();
   const data = [
-    { name: 'Eye-Contact', percentage: 40 },
-    { name: 'Confidence', percentage: 70 },
-    { name: 'Clarity', percentage: 30 },
+    { name: 'Eye-Contact', percentage: 69 },
+    { name: 'Confidence', percentage: 80 },
+    { name: 'Clarity', percentage: 68 },
     { name: 'Boldness', percentage: 90 }
   ];
   const scorechart = [
