@@ -25,13 +25,13 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   // var bgColor = useColorModeValue('','');
   // var bgColor1 = useColorModeValue('#33b894', 'teal');
-  var score = 92;
+  var score = 75;
   const navigate = useNavigate();
   const data = [
     { name: 'Eye-Contact', percentage: 40 },
     { name: 'Confidence', percentage: 70 },
-    { name: 'Clarity', percentage: 20 },
-    { name: 'Boldness', percentage: 100 }
+    { name: 'Clarity', percentage: 30 },
+    { name: 'Boldness', percentage: 90 }
   ];
   const scorechart = [
     { name: 'Success', percentage: score },
@@ -46,7 +46,7 @@ const App = () => {
   useEffect(() => {
     const delay = setTimeout(() => {
       setLoading(false);
-    }, 10000); // Simulating a 2-second loading delay
+    }, 1000); // Simulating a 2-second loading delay
 
     return () => clearTimeout(delay); // Clear the timeout if the component unmounts
   }, []);
