@@ -168,15 +168,30 @@ const CameraApp = () => {
   return (
     <div>
       <NavBar />
-      <Text fontFamily={'cursive'} fontSize={'2xl'} width={'100%'} align={'center'} p={2}>PersonaScan: Discover Your Inner Self  .!</Text>
-      <div style={{width:'22%',alignItems:'center',justifyContent:'center'}}>
-        <Text fontFamily={'cursive'} fontSize={'2xl'} width={'100%'} align={'left'} p={2}>Tell about your Self :</Text>
+      <Text fontFamily={'cursive'} fontSize={'2xl'} width={'100%'} align={'center'} p={2}>Recruitz: Discover Your Inner Self  .!</Text>
+      <div style={{display:'flex'}}>
+      <div style={{marginLeft:"4%",width:'22%',alignItems:'center',justifyContent:'center'}}>
+        <Text fontFamily={'cursive'} fontSize={'20px'} width={'100%'} align={'left'}  p={2}>Tell about yourself{'(1-2) mins'}</Text>
+        <Text fontWeight="bold" fontSize="1.2rem" marginBottom="0.5rem">
+              Projects
+            </Text>
+            <Text fontSize="1rem" marginBottom="1.5rem">
+              Tell about your projects{'(2-3) mins'}
+            </Text>
+          
+            <Text fontWeight="bold" fontSize="1.2rem" marginBottom="0.5rem">
+            Academics : 
+            </Text>
+            <Text fontSize="1rem" marginBottom="1.5rem">
+            Tell about your academics{'(2-4) mins'}
+            </Text>
       </div>
       <Box  bg={bgColor}style={{
         position: 'relative',
         width: '100%',
         maxWidth: '800px', // Adjust the max width as needed
         margin: '0 auto',
+        // marginLeft : '25%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -185,6 +200,7 @@ const CameraApp = () => {
         
         height: isCameraOpen ? 'auto' : '500px', // Adjust the height when the camera is open or closed
       }}>
+        
        
         {isCameraOpen ? (
   <div style={{ position: 'relative', width: '100%', paddingBottom: '62.5%' }}>
@@ -203,6 +219,7 @@ const CameraApp = () => {
         objectFit: 'cover',
       }}
     />
+    
     <div
       style={{
         position: 'absolute',
@@ -219,6 +236,7 @@ const CameraApp = () => {
         {formatTime(elapsedTime)}
       </div>
     </div>
+    
     <div
       style={{
         position: 'absolute',
@@ -239,6 +257,7 @@ const CameraApp = () => {
 )}
 
       </Box>
+      </div>
 
       <HStack spacing={40} pt={5} justifyContent={'center'}>
         <Button onClick={isCameraOpen ? stopCamera : handleStartCamera} variant={'outline'} color={'teal'} borderColor={'teal'}>
